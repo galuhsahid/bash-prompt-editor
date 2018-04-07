@@ -1,43 +1,38 @@
 <template>
     <div>
-        <p>
-        output: {{ example.output }}<br />
-        commands: {{ example.commands }}
-        </p>
-        <input :value="example.output" v-on:keyup.stop="updateField('output', $event.target.value)" />
-        <input :value="example.commands" v-on:keyup.stop="updateField('commands', $event.target.value)"/>
-        
-        <div class="drag">
-            <h2>Draggable </h2>
-            <draggable v-model="list" :options="{group:'people'}" class="dragArea">
-                <div v-for="element in list"><p>
-                {{ element.name }}
-                </p></div>
-             </draggable>
+        <h2>Select</h2>
+        <draggable v-model="list" :options="{group:'people'}" class="dragArea">
+            <div v-for="element in list"><p>
+            {{ element.name }}
+            </p></div>
+        </draggable>
 
-             <h2>Chosen</h2>
-             <draggable  v-model="chosen" :options="{group:'people'}" class="dragArea">
-                <div v-for="element in chosen"><p>
-                {{ element.name }}
-                </p></div>
-             </draggable>
-         </div>
+        <h2>Chosen</h2>
+        <draggable v-model="chosen" :options="{group:'people'}" class="dragArea">
+            <div v-for="element in chosen"><p>
+            {{ element.name }}
+            </p></div>
+        </draggable>
 
-         <h2>List 1 v-for</h2>
-            <div>
-                <div v-for="element in list">{{element.name}}</div>
-             </div>
+        <h3>Or add custom input</h3>
+        <input v-model="custom"> <br />
 
-            <h2>List 2 v-for</h2>
-            <div>
-                <div v-for="element in chosen">{{element.name}}</div>
-            </div>
+        <button v-on:click="addCustomInput()">
+            Add text
+        </button> <br /><br />
 
-            <h2> Example and output</h2>
+        <button v-on:click="reset()">
+           Reset
+        </button>
 
-            {{ example }}
-        </div>
-    
+
+        <h2>Terminal Output</h2>
+
+        {{ bashOutput }}
+
+        <h2>Code</h2>
+
+        {{ bashCommands }}
     </div>
 </template>
 
@@ -52,40 +47,53 @@ export default {
   store: store,
   data () {
     return {
-      list: this.$store.state.list,
-      chosen: this.$store.state.chosen,
-      example: this.$store.state.example,
+      custom: '',
     };
   },
   methods: {
-   updateField(field, value) {
-     this.$store.commit('updateUser', {
-     	[field]: value
-     });
-   },
+    addCustomInput: function () {
+      var customInput = {
+          name: this.custom,
+          bashCode: this.custom,
+          output: this.custom,
+          description: 'Custom input.'
+      }
+
+      this.$store.commit('addCustom', customInput);
+    },
+    reset: function() {
+      this.$store.commit('reset');
+    }
   },
   computed: {
-    fullName: function () {
-        return this.$store.state.example
+    bashOutput: function() {
+        var output = this.chosen.reduce(function(acc, test) {
+            return acc + test.output + ' ';
+        }, '');
+       return output;
+    },
+    bashCommands: function() {
+        var commands = this.chosen.reduce(function(acc, test) {
+            return acc + test.bashCode + ' ';
+        }, 'PS1=');
+       return commands;
     },
     chosen: {
         get() {
             return this.$store.state.chosen
         },
         set(value) {
-            // For every val
-            this.$store.commit('updateList', value)
-            this.$store.commit('updateExample', value)
+            this.$store.commit('updateChosen', value)
         }
     },
-      list: {
+    list: {
         get() {
             return this.$store.state.list
         },
         set(value) {
-            this.$store.commit('updateChosen', value)
+            this.$store.commit('updateList', value)
         }
-      }
+    }
   }
 };
 </script>

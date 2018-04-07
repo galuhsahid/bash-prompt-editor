@@ -2,7 +2,6 @@
   <div id="app">
     <h1>Bash Prompt Editor</h1>
     <Play />
-    <Elements />
   </div>
 </template>
 
