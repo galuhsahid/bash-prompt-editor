@@ -3,6 +3,7 @@
 > Editor to customize bash prompt
 
 ## Development Checklist
+
 [v] Store commands
 [v] Reset button
 [v] Add custom input
