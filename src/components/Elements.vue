@@ -62,5 +62,15 @@ export default {
   components: {
     draggable,
   },
+  watch: {
+    list() {
+      this.$store.commit('resetSelection')
+    },
+  },
+  computed: {
+    addOptions() {
+      return this.$store.state.basic
+    }
+  }
 };
 </script>

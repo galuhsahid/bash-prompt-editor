@@ -15,8 +15,12 @@ export const store = new Vuex.Store({
       {
         name: 'hostname',
         bashCode: 'bashhostname',
-        output: 'acidburn'
-      },
+        output: 'acidburn',
+      }, {
+        name: 'shit',
+        bashCode: 'jhwbefj',
+        output: 'bleh'
+      }
     ],
     list: [
       {
@@ -35,15 +39,11 @@ export const store = new Vuex.Store({
     updateUser: function (state, example) {
         Object.assign(state.example, example);
     },
-    INPUT (state, { list }) {
-        state.list = [...list];
+    updateList: function (state, example) {
+        Object.assign(state.list, list);
     },
-    INPUTCHOSEN (state, { list }) {
-        state.chosen = [...chosen];
+    updateList: function (state, example) {
+        Object.assign(state.chosen, chosen);
     },
   },
-  getters: {
-    value: (state) => state.list,
-    valueChosen: (state) => state.chosen,
-  }
 })

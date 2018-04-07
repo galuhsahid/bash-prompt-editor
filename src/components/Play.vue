@@ -9,28 +9,30 @@
         
         <div class="drag">
             <h2>Draggable </h2>
-            <draggable v-model="list" class="dragArea">
-                <div v-for="element in value"><p>
+            <draggable v-model="list" :options="{group:'people'}" class="dragArea">
+                <div v-for="element in list"><p>
                 {{ element.name }}
                 </p></div>
              </draggable>
 
              <h2>Chosen</h2>
-             <draggable v-model="chosen" class="dragArea">
-                <div v-for="element in valueChosen"><p>
+             <draggable  v-model="chosen" :options="{group:'people'}" class="dragArea">
+                <div v-for="element in chosen"><p>
                 {{ element.name }}
                 </p></div>
              </draggable>
          </div>
 
-        <div class="normal">
-            <h2>Normal v-for</h2>
-            <div class="dragArea">
-                <div v-for="element in value">{{element.name}}</div>
+         <h2>List 1 v-for</h2>
+            <div>
+                <div v-for="element in list">{{element.name}}</div>
              </div>
-         </div>
-         <pre>{{ value }}</pre>
-         <pre>{{ valueChosen }}</pre>
+
+            <h2>List 2 v-for</h2>
+            <div>
+                <div v-for="element in chosen">{{element.name}}</div>
+            </div>
+        </div>
     
     </div>
 </template>
@@ -46,6 +48,8 @@ export default {
   store: store,
   data () {
     return {
+      list: this.$store.state.list,
+      chosen: this.$store.state.chosen,
       example: this.$store.state.example
     };
   },
@@ -55,71 +59,37 @@ export default {
      	[field]: value
      });
    },
+   add: function() {
+      this.list.push({
+        name: 'Juan'
+      });
+    },
+    replace: function() {
+      this.list = [{
+        name: 'Edgard'
+      }]
+    }
   },
   computed: {
     fullName: function () {
         return this.$store.state.example
     },
-    value: (state) => state.$store.getters.value,
-    valueChosen: (state) => state.$store.getters.valueChosen,
     chosen: {
-      get() {
-        const self = this;
-
-        const arrayChangeHandler = {
-          get(target, property) {
-            return target[property];
-          },
-          set(target, property, value) {
-            target[property] = valueChosen;
-
-            self.$store.commit({
-              type: 'INPUT',
-              list: target,
-            });
-
-            return true;
-          },
-        };
-
-        return new Proxy([...this.value], arrayChangeHandler);
-      },
-      set(newValue) {
-        this.$store.commit({
-          type: 'INPUT',
-          chosen: target,
-        });
-      },
+          get() {
+            return this.$store.state.chosen
+        },
+        set(value) {
+            this.$store.commit('updateList', value)
+        }
     },
-    list: {
-      get() {
-        const self = this;
-
-        const arrayChangeHandler = {
-          get(target, property) {
-            return target[property];
-          },
-          set(target, property, value) {
-            target[property] = value;
-
-            self.$store.commit({
-              type: 'INPUT',
-              list: target,
-            });
-
-            return true;
-          },
-        };
-
-        return new Proxy([...this.value], arrayChangeHandler);
-      },
-      set(newValue) {
-        this.$store.commit({
-          type: 'INPUT',
-          list: target,
-        });
-      },
-    },
-  },
+      list: {
+          get() {
+            return this.$store.state.list
+        },
+        set(value) {
+            this.$store.commit('updateChosen', value)
+        }
+      }
+  }
 };
 </script>
