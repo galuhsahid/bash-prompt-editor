@@ -32,6 +32,10 @@
             <div>
                 <div v-for="element in chosen">{{element.name}}</div>
             </div>
+
+            <h2> Example and output</h2>
+
+            {{ example }}
         </div>
     
     </div>
@@ -50,7 +54,7 @@ export default {
     return {
       list: this.$store.state.list,
       chosen: this.$store.state.chosen,
-      example: this.$store.state.example
+      example: this.$store.state.example,
     };
   },
   methods: {
@@ -59,31 +63,23 @@ export default {
      	[field]: value
      });
    },
-   add: function() {
-      this.list.push({
-        name: 'Juan'
-      });
-    },
-    replace: function() {
-      this.list = [{
-        name: 'Edgard'
-      }]
-    }
   },
   computed: {
     fullName: function () {
         return this.$store.state.example
     },
     chosen: {
-          get() {
+        get() {
             return this.$store.state.chosen
         },
         set(value) {
+            // For every val
             this.$store.commit('updateList', value)
+            this.$store.commit('updateExample', value)
         }
     },
       list: {
-          get() {
+        get() {
             return this.$store.state.list
         },
         set(value) {

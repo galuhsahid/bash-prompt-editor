@@ -39,11 +39,15 @@ export const store = new Vuex.Store({
     updateUser: function (state, example) {
         Object.assign(state.example, example);
     },
-    updateList: function (state, example) {
+    updateList: function (state, list) {
         Object.assign(state.list, list);
     },
-    updateList: function (state, example) {
+    updateChosen: function (state, chosen) {
         Object.assign(state.chosen, chosen);
     },
+    updateExample: function (state, example) {
+        Object.assign(state.example, example);
+    },
+
   },
 })
