@@ -1,0 +1,10 @@
+{
+    "name": "bash-prompt-editor",
+    "version": "1.0.0",
+    "description": "Editor to customize bash prompt",
+    "author": "Galuh Sahid <galuh.tunggadewi@gmail.com>",
+    "private": true,
+    "scripts": {
+      "postinstall": "npm install express"
+    }
+}
