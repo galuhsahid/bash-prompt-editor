@@ -3,17 +3,17 @@
 > Generates prompt to customize the terminal for ya
 
 ## Development Checklist
-- [v] Store commands
-- [v] Reset button
-- [v] Add custom input
-- [v] Colors
-- [v] Complete code store 
-- [v] Layouting
-- [v] Add copy button
+- [x] Store commands
+- [x] Reset button
+- [x] Add custom input
+- [x] Colors
+- [x] Complete code store 
+- [x] Layouting
+- [x] Add copy button
 - [ ] Refactoring
 
 ## Features Checklist
-- [v] insert emoji
+- [x] insert emoji
 - [ ] git
 - [ ] colorize ls
 - [ ] description
