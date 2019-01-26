@@ -1,4 +1,4 @@
-# Bash Prompt Generator
+# Bash Prompt Editor
 
 > Generates prompt to customize the terminal for ya
 
