@@ -2,9 +2,9 @@
 
 > Generates prompt to customize the terminal for ya
 
-![bash-prompt-editor-1](https://raw.githubusercontent.com/galuhsahid/bash-prompt-editor/master/screencap-1.gif)
+![bash-prompt-editor-1](screencap-1.gif)
 
-![bash-prompt-editor-2](https://raw.githubusercontent.com/galuhsahid/bash-prompt-editor/master/screencap-2.gif)
+![bash-prompt-editor-2](screencap-2.gif)
 
 ## Development Checklist
 - [x] Store commands
