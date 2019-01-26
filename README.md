@@ -18,6 +18,9 @@
 - [ ] colorize ls
 - [ ] description
 
+## 💭 Contributing
+If you're interested to work in improving the points above or if you have any idea, feel free to make a pull request! 🙏
+
 ## Build Setup
 
 ``` bash
