@@ -1,5 +1,5 @@
 {
-  "name": "prompt-editor",
+  "name": "bash-prompt-editor",
   "version": "1.0.0",
   "description": "Editor to customize bash prompt",
   "author": "Galuh Sahid <galuh.tunggadewi@gmail.com>",
@@ -11,7 +11,16 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ansi-256-colors": "^1.1.0",
+    "color-convert": "^1.9.1",
+    "emoji-mart": "^2.5.1",
+    "emoji-mart-vue": "^2.4.5",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.1",
+    "v-tooltip": "^2.0.0-rc.31",
     "vue": "^2.5.2",
+    "vue-clipboard2": "^0.2.1",
+    "vue-color": "^2.4.6",
     "vue-router": "^3.0.1",
     "vue-static-terminal": "^1.0.2",
     "vuedraggable": "^2.16.0",

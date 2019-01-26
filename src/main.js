@@ -3,6 +3,9 @@
 import Vue from 'vue';
 import App from './App';
 import VuePrism from 'vue-prism';
+import VueClipboard from 'vue-clipboard2'
+
+Vue.use(VueClipboard)
 Vue.use(VuePrism)
 import 'prismjs/themes/prism.css';
 

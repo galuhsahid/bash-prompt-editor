@@ -1,15 +1,22 @@
-# prompt-editor
+# Bash Prompt Generator
 
-> Editor to customize bash prompt
+> Generates prompt to customize the terminal for ya
 
 ## Development Checklist
+- [v] Store commands
+- [v] Reset button
+- [v] Add custom input
+- [v] Colors
+- [v] Complete code store 
+- [v] Layouting
+- [v] Add copy button
+- [ ] Refactoring
 
-[v] Store commands
-[v] Reset button
-[v] Add custom input
-[ ] Figure out how to incorporate colors
-[ ] Layouting
-
+## Features Checklist
+- [v] insert emoji
+- [ ] git
+- [ ] colorize ls
+- [ ] description
 
 ## Build Setup
 
